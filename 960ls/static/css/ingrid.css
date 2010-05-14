@@ -1,0 +1,132 @@
+
+#tc{
+    display:none;
+}
+
+#header{
+    height:150px;
+    border-bottom:2px dashed #ccc;
+    overflow:hidden;
+}
+
+#header *{
+    margin-top:20px;
+    height:130px;
+    background:url(../img/transparency.png);
+}
+
+#header * *{
+    margin-top:20px;
+    height:110px;
+    background:url(../img/transparency.png);
+}
+
+#header * * *{
+    margin-top:20px;
+    height:90px;
+    background:url(../img/transparency.png);
+}
+
+#content{
+    height:300px;
+    border-bottom:2px dashed #ccc;
+    overflow:hidden;
+}
+
+#content *{
+    margin-top:20px;
+    height:280px;
+    background:url(../img/transparency.png);
+}
+
+#content * *{
+    margin-top:20px;
+    height:260px;
+    background:url(../img/transparency.png);
+}
+
+#content * * *{
+    margin-top:20px;
+    height:240px;
+    background:url(../img/transparency.png);
+}
+
+#footer{
+    height:150px;
+    overflow:hidden;
+}
+
+#footer *{
+    margin-top:20px;
+    height:130px;
+    background:url(../img/transparency.png);
+}
+
+#footer * *{
+    margin-top:20px;
+    height:110px;
+    background:url(../img/transparency.png);
+}
+
+#footer * * *{
+    margin-top:20px;
+    height:90px;
+    background:url(../img/transparency.png);
+}
+
+#preview_box{
+    margin-left:auto;
+    margin-right:auto;
+    overflow:hidden;
+    clear:both;
+    
+}
+
+#dom_toolbox{
+    position:absolute !important;
+    height:auto !important;
+    width:auto !important;
+    border:0 none !important;
+    z-index:1000;
+    /*margin:0 0 0 5px !important;*/
+    margin-top:1px !important;
+    display:none;
+    padding:2px 4px 2px 4px;
+    background-color:#ccc;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    line-height:0;
+}
+
+#dom_toolbox img{
+    cursor:pointer;
+    background: none !important;
+    margin:0 !important;
+    height:auto !important;
+}
+
+.column {
+    background-color:#fff;
+    height:606px;
+    float:left;
+    margin-top:0px;
+
+}
+.gutter {
+    background-color:#f9ffc3;
+    height:606px;
+    float:left;
+    margin-top:0px;
+
+}
+.outer_gutter {
+    background-color:#b6ba96;
+    height:606px;
+    float:left;
+    margin-top:0px;
+
+}
+
+#tc div #dom_toolbox{
+    display:block !important;
+}

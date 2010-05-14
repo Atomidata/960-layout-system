@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+
+{%block content%}
+        
+        <ul id="settings">
+                <form id="main_form" style="display:inline;" method="post" action="/save_code" target="_blank">
+                <li class="main_grid_3">
+                    <ul>
+                        <li>Width (px / <input type="checkbox" id="fluid" name="fluid" value="is_fluid" /> Fluid)</li>
+                        <li class="box"><input style="margin-left:auto;" type="text" id="grid_width"   name="grid_width" value="960"/></li>
+                    </ul>
+                </li>
+                
+                <li class="main_grid_3">
+                    <ul>
+                        <li>Columns (#)</li>
+                        <li class="box"><input type="text" id="column_number" name="column_number" value="12"/></li>
+                    </ul>
+                </li>
+                
+                <li class="main_grid_3">
+                    <ul>
+                        <li>Gutters (px / %)</li>
+                        <li class="box"><input type="text" id="gutter_width" name="gutter_width" value="20"/></li>
+                    </ul>
+                </li>
+                
+                <li class="main_grid_3 main_omega links">
+                    
+                    <div class="buttons">
+                        
+                        <a id="generate_grid_btn" href="#" class="positive">
+                            <img src="{{ url_for('static', filename='img/icons/tick.png') }}" alt=""/> 
+                            Save
+                        </a>
+                        
+                        <span class="sep"></span>
+                        
+                        
+                            <div class="hidden"><input name="language" value="html4strict" type="hidden"/></div>
+                            <div class="hidden"><input name="action" value="create" type="hidden"/></div>
+                            <!--div class="hidden"><input name="poster" value="960ls" type="hidden" /></div>
+                            <div class="hidden"><input name="paste" value="Send" type="hidden" /></div-->
+                            <div class="hidden"><textarea rows="1" cols="1" name="html_code" id="html_code" class="hidden"></textarea></div>
+                            <div style="display:inline">
+                                <button type="submit" class="positive">
+                                    <img src="{{ url_for('static', filename='img/icons/page_white_code.png') }}" alt=""/> 
+                                    CODE
+                                </button>
+                            </div>
+                 
+                        
+                        
+
+						<div style="display:inline">
+                        <button type="submit" class="positive" value="zip" name="zip">
+                            <img src="{{ url_for('static', filename='img/icons/compress.png') }}" alt=""/>
+                            ZIP
+                          </button>
+                        </div>
+                    </div>
+                    
+                </li>
+                       </form>
+
+        </ul>
+        <!-- end #settings -->
+
+        
+        
+        <!-- end #grid -->
+        <div id="preview_box">
+            <div id="main_grid" >
+            
+            <div id="main_grid-header">
+                <h2 class="center">
+                    #header
+                </h2>
+            </div>
+            
+            <div id="main_grid-content">
+                <h2 class="center">
+                    #content
+                </h2>
+            </div>
+            
+            <div id="main_grid-footer">
+                <h2 class="center">
+                    #footer
+                </h2>
+            </div>
+            
+        </div>
+         </div>
+        <div style="position:relative;margin-top:-606px;" class="hidden">
+            <div id="tc">
+                <div id="header" class="container_10"></div>
+                <div id="content" class="container_10"></div>
+                <div id="footer" class="container_10"></div>
+            </div>
+        </div>
+        
+         
+    
+        
+        
+        <div id="dom_toolbox">
+            <img id="add_child" src="{{ url_for('static', filename='img/add.png') }}" alt="Add" />
+            <img id="edit_child" src="{{ url_for('static', filename='img/cog.png') }}" alt="Edit" />
+            <img id="delete_child" src="{{ url_for('static', filename='img/delete.png') }}" alt="Delete" />
+        </div>
+        
+        <div class="hidden">
+	
+	<div id="add_form">
+	    <label for="add_type">Type</label>
+	    <select id="add_type">
+		<option value="div">Div</option>
+		<option value="p">Paragraph</option>
+		<option value="h1">H1</option>
+		<option value="h2">H2</option>
+	    </select><br/>
+	    <label for="add_columns">Number of Columns</label><input type="text" id="add_columns" value="1" /><br/>
+	    <label for="add_classes">Additional Classes</label><input type="text" id="add_classes" value="" /><br/>
+	    <label for="add_id">Element Id</label><input type="text" id="add_id" value="" /><br/>
+	    <input type="button" id="add_button" value="Add" /><input type="button" id="add_close" value="Close" />
+	</div>
+	
+	<div id="edit_form">
+	    <label for="edit_columns">Number of Columns</label><input type="text" id="edit_columns" value="1" /><br/>
+	    <label for="edit_classes">edititional Classes</label><input type="text" id="edit_classes" value="" /><br/>
+	    <label for="edit_id">Element Id</label><input type="text" id="edit_id" value="" /><br/>
+	    <input type="button" id="edit_button" value="Edit" /><input type="button" id="edit_close" value="Close" />
+	</div>
+	
+        </div>
+ {%endblock%}
+  

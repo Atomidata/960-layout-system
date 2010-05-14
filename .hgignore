@@ -1,0 +1,11 @@
+syntax: glob
+*.orig
+*.rej
+*~
+*.o
+*.pyc
+.DS_Store
+*.kpf
+.svn
+*.egg-info
+*.db

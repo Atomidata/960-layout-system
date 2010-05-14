@@ -1,0 +1,132 @@
+
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+.container_{{column_number}} {
+	margin-left: 0px;
+	margin-right: 0px;
+	width: {{column_number * column_width + column_number * gutter_width}}%;
+	
+	
+}
+
+/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+
+.alpha {
+	margin-left: 0 !important;
+}
+
+.omega {
+	margin-right: 0 !important;
+}
+
+
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+{%for i in range(1, column_number+1) %}
+.grid_{{i}},{%endfor%}.grid_{{column_number}}{
+	display:inline;
+	float: left;
+	position: relative;
+	margin-left: {{gutter_width/2}}%;
+	margin-right: {{gutter_width/2}}%;
+}
+
+
+/* Grid >> 2 Columns
+----------------------------------------------------------------------------------------------------*/
+{%for i in range(1, column_number+1) %}
+.container_{{column_number}} .grid_{{i}}{
+	width:{{(i-1)* gutter_width + i * column_width}}%;
+}
+{%endfor%}
+
+{%for i in range(1, column_number+1) %}
+{%for j in range(1, column_number+1) %}
+.grid_{{i}} .grid_{{j}}{
+    width:{{(j/i)*100 - gutter_width - 1}}%;
+    margin-left: {{gutter_width*(12/i)/2}}%;
+	margin-right: {{gutter_width*(12/i)/2}}%;
+}
+{%endfor%}
+{%endfor%}
+
+
+
+
+/* Prefix Extra Space >> 2 Columns
+----------------------------------------------------------------------------------------------------*/
+{%for i in range(1, column_number+1) %}
+    .container_{{ column_number }} .prefix_{{i}} {
+	padding-left:{{i * gutter_width + i * column_width}}%;
+}
+{%endfor%}
+
+
+/* Suffix Extra Space >> 2 Columns
+----------------------------------------------------------------------------------------------------*/
+{%for i in range(1, column_number+1) %}
+    .container_{{column_number}} .suffix_{{i}} {
+	padding-right:{{i * gutter_width + i * column_width}}%;
+}
+{%endfor%}
+
+
+/* Push Space >> 2 Columns
+----------------------------------------------------------------------------------------------------*/
+{%for i in range(1, column_number+1) %}
+    .container_{{column_number}} .push_{{i}} {
+	left:{{i * gutter_width + i * column_width}}%;
+}
+{%endfor%}
+
+
+
+
+/* Pull Space >> 2 Columns
+----------------------------------------------------------------------------------------------------*/
+{%for i in range(1, column_number+1) %}
+    .container_{{column_number}} .pull_{{i}} {
+	right:{{ i * gutter_width + i * column_width}}%;
+}
+{%endfor%}
+
+
+
+/* Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+
+.clearfix:after {
+	clear: both;
+	content: ' ';
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.clearfix {
+	display: block;
+}

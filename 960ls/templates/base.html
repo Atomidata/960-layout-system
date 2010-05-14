@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+        <title>960 Layout System | Grids made easy</title>
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+            
+        <link rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" href="http://yui.yahooapis.com/3.0.0/build/cssreset/reset-min.css" />
+        <link rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" href="{{ url_for('static', filename='css/style.css') }}" />
+        <!--[if lte IE 7]>
+            <link rel="stylesheet" type="text/css" media="screen, projection" charset="utf-8" href="{{ url_for('static', filename='css/fuck_ie.css') }}">
+        <![endif]-->
+		
+        
+			<link id="css_link" rel="stylesheet" href="960.css" type="text/css" media="screen"/>
+	
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/ingrid.css') }}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='jquery_ui/css/ui-lightness/jquery-ui-1.7.2.custom.css') }}" type="text/css" media="screen"/>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='jquery_ui/js/jquery-ui-1.7.2.custom.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/engine.js') }}"></script>
+        {% block extrahead %}
+        	
+        {% endblock %}
+    </head>
+    <body>
+        
+        <div id="main_header">
+            <h1 style="font-size:16px;">Now supporting <b>fully nested fluid grids</b> (beta)</h1>
+            <a href="/">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="960 Layout System" />
+            </a>
+            
+        </div>
+        <!-- end #header -->
+
+		{%block content%}{%endblock%}
+
+		      <div id="about">
+		        <p>
+		                <!-- AddThis Button BEGIN -->
+		                <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;pub=xa-4b169beb7d5242a1"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pub=xa-4b169beb7d5242a1"></script>
+		                <!-- AddThis Button END -->
+		        </p>
+
+		            <h1>News</h1>
+		            <ul>
+		                <li>Generating fluid 100% width grids</li>
+		                <li>We moved to a new domain: 960ls.atomidata.com and new server. No trafic limits now!</li>
+		                <li>We moved the generating script from PHP to Python - <a href="http://flask.pocoo.org/">Flask</a> framework</li>
+		            </ul>
+		            <br />
+
+		            <h1>Usage</h1>
+		            <ul>
+		                <li>Set width, # of columns, and gutter width, then click <b>Save</b>.</li>
+		                <li>Hover over a section and click the <b>Add</b> button to add elements.</li>
+		                <li>Add an <b>id</b> or some additional <b>classes</b> to the element for more control.</li>
+		                <li>Click <b>Code</b> to see the generated HTML and CSS code <b>Zip</b> to download a zip archive of the generated code.</li>
+		                <li>Refresh the page at any time to start over from scratch.</li>
+		            </ul>
+		            <br />
+
+		            <h1>FAQ</h1>
+		            <p>
+		                <em>"What is that #header, #content, and #footer crap?"</em><br />
+		                The grid is broken up into 3 sections (#header, #content, and #footer) for the sake of simplicity. We feel these are the
+		                most common sections and almost any site could be built upon this structure.
+		            </p>
+		            <p>
+		                <em>"It keeps alerting me there isn't enough space. What does that mean?"</em><br />
+		                It is telling you that because you've ran out of space horizontally for the grid element you're trying to insert. For instance,
+		                if you have a grid that is just 10 columns wide and you try to insert an 11 column grid element to it, it won't fit and lets you know
+		                that no action was made.
+		            </p>
+		            <p>
+		                <em>"It keeps nesting my elements when I try to stack them. How do I stack grid elements on top of each other?"</em><br />
+		                You can't. If you really need to stack elements, you can go into your HTML file and copy/paste the element in question and separate the twin
+		                elements with a <a href="http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack/">clearfixed div</a>.
+		            </p>
+		            <p>
+		                <em>"I want to help by contributing code. Where can I find this project?"</em><br />
+		                Bitbucket: <a href="http://bitbucket.org/dekomote/960-layout-system">960 Layout System</a>
+		            </p>
+		            <br />
+
+		            <h1>About 960.ls</h1>
+		            <p>
+		                960.ls is <a href="http://flask.pocoo.org/">Flask</a> powered web application with high usage of JavaScript, developed by <b>Dejan Noveski, Vasil Vangelovski and Cory Simmons</b>.
+		            </p>
+		            <p>
+		                The 960 Layout System was created to help streamline web designers' workflow by giving them all the power of <a href="http://960.gs">960.gs</a> in a nice, easy-to-use
+		                interface that is useful for noob and guru alike.
+		            </p>
+		            <p>
+		                If you encounter any bugs, feel free to <a href="mailto:vvangelovski@gmail.com,csimmonswork@gmail.com,dr.mote@gmail.com?subject=960.ls Inquiry">let us know</a>, and please keep in mind this project
+		                is 100% free and open-source.
+		            </p>
+		            <br />
+		            <p>
+		                &copy; 2010 <a href="http://www.atomidata.com">Atomidata</a> and <a href="http://pressedweb.com">Pressed Web</a>  |  <a href="{{ url_for('static', filename='privacy.txt') }}">Privacy policy</a>  |  Powered by <a href="http://flask.pocoo.org/">Flask</a>, <a href="http://jquery.com">JQuery</a> and <a href="http://960.gs">960.gs</a>
+		            </p>
+
+		        </div>
+		        <!-- end #about -->
+		        <script type="text/javascript">
+		        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		        </script>
+		        <script type="text/javascript">
+		        try {
+		        var pageTracker = _gat._getTracker("UA-16246632-1");
+		        pageTracker._trackPageview();
+		        } catch(err) {}</script>
+
+		    </body>
+		</html>

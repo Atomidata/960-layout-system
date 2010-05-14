@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+{%block content%}
+
+<div id="highlighted_code">
+<style type="text/css">
+	{{pygments_style|safe}}
+	.highlight, .highlight pre, td.code{
+		padding-left: 10px;
+		background-color:#0F1123;
+	}
+</style>
+{% if hashtml %}
+<h2>HTML Code:</h2>
+<div id="html_code_highlight" class="highlight">
+	{{pygmented_html_code|safe}}
+</div>
+{% endif %}
+<h2>CSS Code:</h2>
+<div id="css_code_highlight" class="highlight" style="">
+	{{pygmented_css_code|safe}}
+</div>
+<div>
+<textarea id="html_code_ta" style="display:none">
+{{template.html|safe}}
+</textarea>
+<textarea id="css_code_ta" style="display:none">
+{{template.css|safe}}
+</textarea>
+</div>
+</div>
+{%endblock%}
