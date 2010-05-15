@@ -10,6 +10,8 @@ $(document).ready(function(){
                 });
         
         $('#column_number').attr('disabled','');
+        $('input[type=hidden][name=column_number]').remove();
+        $('#column_number').attr('name','_column_number');
         
         $('#fluid').click(function(){
             if(!fluid){
@@ -157,7 +159,13 @@ function generateGrid(){
         $('#css_link').ready(function(){
                 $('#tc').show();
                 $('#tc').parent("div:first:hidden").show();
+                $('#column_number').attr('name','_column_number');
+                if($('input[type=hidden][name=column_number]').length>0)
+                        $('input[type=hidden][name=column_number]').val($('#column_number').val());
+                else
+                        $('#column_number').after('<input type="hidden" name="column_number" value="'+$('#column_number').val()+'"/>');
                 $('#column_number').attr('disabled','disabled');
+                
             });
     }
 }
@@ -192,6 +200,11 @@ function generateFluidGrid(){
         $('#css_link').ready(function(){
                 $('#tc').show();
                 $('#tc').parent("div:first:hidden").show();
+                $('#column_number').attr('name','_column_number');
+                if($('input[type=hidden][name=column_number]').length>0)
+                        $('input[type=hidden][name=column_number]').val($('#column_number').val());
+                else
+                        $('#column_number').after('<input type="hidden" name="column_number" value="'+$('#column_number').val()+'"/>');
                 $('#column_number').attr('disabled','disabled');
             });
     }
