@@ -149,6 +149,7 @@ function generateGrid(){
         $('#css_link').attr('href','960.css?column_width='+column_width.toString()+'&column_number='+column_number.toString()+'&gutter_width='+gutter_width.toString());
         $('#generated_href').attr('href','960.css?column_width='+column_width.toString()+'&column_number='+column_number.toString()+'&gutter_width='+gutter_width.toString());
         $('#generated_href').show();
+        $('#column_width').val(column_width);
         $('#header').attr('class','container_'+column_number.toString());
         $('#header').data('columns',column_number);
         $('#content').attr('class','container_'+column_number.toString());
@@ -190,6 +191,7 @@ function generateFluidGrid(){
         $('#css_link').attr('href','960fluid.css?column_width='+column_width.toString()+'&column_number='+column_number.toString()+'&gutter_width='+gutter_width.toString());
         $('#generated_href').attr('href','960fluid.css?column_width='+column_width.toString()+'&column_number='+column_number.toString()+'&gutter_width='+gutter_width.toString());
         $('#generated_href').show();
+        $('#column_width').val(column_width);
         $('#header').attr('class','container_'+column_number.toString());
         $('#header').data('columns',column_number);
         $('#content').attr('class','container_'+column_number.toString());
