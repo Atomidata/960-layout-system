@@ -17,11 +17,13 @@ $(document).ready(function(){
             if(!fluid){
                 $('#grid_width').attr('disabled','disabled');
                 $('#gutter_width').val('1');
+                $('#column_width').val('7.33333');
                 fluid = true;
             }
             else{
                 $('#grid_width').attr('disabled','');
                 $('#gutter_width').val('20');
+                $('#column_width').val('60');
                 fluid = false;
             }
         });
