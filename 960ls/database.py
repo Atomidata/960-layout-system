@@ -7,6 +7,7 @@ import sys
 root = os.path.dirname(__file__)
 dbpath = os.path.join(root, '960.db')
 engine = create_engine('sqlite:///%s'%dbpath, convert_unicode=True)
+
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))

@@ -39,11 +39,13 @@ def fluid_css():
 
 @app.route('/saved_templates/<int:template_id>')
 def template(template_id):
+    
     template  = Template.query.filter(Template.id == long(template_id)).first()
     if not template:
         return "The requested template doesn't exist", 404
     hashtml = len(template.html.strip()) > 0 
-    return render_template('saved_template.html', template = template, 
+    return render_template('saved_template.html', template = template,
+                            pygmented_css_link_code = highlight('<link rel="stylesheet" type="text/css" href="http://960ls.atomidata.com/static/cssserve/%s.css">'%str(template.id), CssLexer(), HtmlFormatter(style = 'bw', linenos = 'table')), 
                             pygmented_html_code = highlight(template.html, HtmlLexer(), HtmlFormatter(style = 'bw', linenos = 'table')), 
                             pygmented_css_code = highlight(template.css, CssLexer(), HtmlFormatter(style = 'bw', linenos = 'table')), 
                             pygments_style = HtmlFormatter(style = 'bw').get_style_defs('.highlight'),
@@ -65,8 +67,14 @@ def _save_code():
     
     
     template = Template(html = unicode(request.form.get('html_code')), css = unicode(csscontent))
+    root = os.path.dirname(__file__)
+    
     db_session.add(template)
     db_session.commit()
+    csspath = os.path.join(os.path.join(root, 'static'), 'cssserve')
+    cssf = open(os.path.join(csspath, "%s.css"%str(template.id)), 'w')
+    cssf.write(csscontent)
+    cssf.close()
     return template.id
 
 @app.route("/zipped/<int:template_id>")
