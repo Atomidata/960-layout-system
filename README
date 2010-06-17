@@ -1,12 +1,12 @@
-===============
+=====================
 960 Layout System
-===============
+=====================
 
 Install
-=======
+==============
 
-1. Install flask and sqlalchemy (easy_install flask, easy_install sqlalchemy).
-2. Create the database (python models.py).
+1. Install flask, sqlalchemy and pygments (easy_install flask, easy_install sqlalchemy, easy_install pygments).
+2. Create the database - run models.py (python models.py).
 3. Run the test server python webapp.py
 
 TODO
