@@ -11,6 +11,8 @@ from pygments.formatters import HtmlFormatter
 import zipfile
 import os
 import sys
+import errno
+from datetime import datetime
 
 SITE_DOMAIN = '960ls.atomidata.com'
 
@@ -25,6 +27,14 @@ DEFAULT_COL_NUM =  12
 
 app = Flask(__name__)
 
+
+def mkdir_p(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc: # Python >2.5
+        if exc.errno == errno.EEXIST:
+            pass
+        else: raise
 
 
 @app.route("/")
@@ -83,7 +93,9 @@ def template(template_id):
         return "The requested template doesn't exist", 404
     hashtml = len(template.html.strip()) > 0
     
-    cssperma = 'http://%s/static/cssserve/%s.css'%(SITE_DOMAIN, str(template.id))
+    
+        
+    cssperma = 'http://%s/static/cssserve/%s/%s.css'%(SITE_DOMAIN, '/'.join(list(str(template.id))), str(template.id))
     pygmented_css_link =  highlight('<link rel="stylesheet" type="text/css" href="%s">'%cssperma,
                                     CssLexer(),
                                     HtmlFormatter(style = 'bw',
@@ -133,8 +145,10 @@ def _save_code():
     db_session.add(template)
     db_session.commit()
     csspath = os.path.join(os.path.join(root, 'static'), 'cssserve')
+    for c in list(str(template.id)):
+        csspath = os.path.join(csspath, c)
     if not os.path.isdir(csspath):
-        os.mkdir(csspath)
+        mkdir_p(csspath)
     cssf = open(os.path.join(csspath, "%s.css"%str(template.id)), 'w')
     cssf.write(csscontent)
     cssf.close()
@@ -154,14 +168,15 @@ def download_zipped(template_id):
         return "The requested template doesn't exist", 404
 
     root = os.path.dirname(__file__)
-    zippath = os.path.join(os.path.join(root, 'static'), 'zip')
+    today = datetime.today()
+    zippath = os.path.join(os.path.join(os.path.join(os.path.join(os.path.join(root, 'static'), 'zip'), str(today.year) ), str(today.month)) , str(today.day))
     if not os.path.isdir(zippath):
-        os.mkdir(zippath)
+        mkdir_p(zippath)
     zf = zipfile.ZipFile(os.path.join(zippath, "%s.zip"%str(template_id)), "w")
     zf.writestr('index.html', template.html)
     zf.writestr('960.css', template.css)   
     zf.close()
-    return redirect(url_for('static', filename = "zip/%s.zip"%str(template_id) ))
+    return redirect(url_for('static', filename = "zip/%s/%s/%s/%s.zip"%( str(today.year), str(today.month), str(today.day), str(template_id))))
     
     
 
