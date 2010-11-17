@@ -16,6 +16,7 @@
 			<link id="css_link" rel="stylesheet" href="960.css" type="text/css" media="screen"/>
 	
         <link rel="stylesheet" href="{{ url_for('static', filename='css/ingrid.css') }}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/pygment.css') }}" type="text/css" media="screen"/>
         <link rel="stylesheet" href="{{ url_for('static', filename='jquery_ui/css/ui-lightness/jquery-ui-1.7.2.custom.css') }}" type="text/css" media="screen"/>
         <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='jquery_ui/js/jquery-ui-1.7.2.custom.min.js') }}"></script>
@@ -27,9 +28,17 @@
     <body>
         
         <div id="main_header">
-             <a href="/">
-                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="960 Layout System" />
+             <a id="top-logo" href="/">
+                <img id="top" src="{{ url_for('static', filename='img/logo.png') }}" alt="960 Layout System" />
             </a>
+            <div id="top-menu">
+                <a href="/">Home</a>  |  
+                <a href="#usage">Usage</a>  |  
+                <a href="#news">News</a>  |  
+                <a href="#faq">FAQ</a>  |  
+                <a href="#about960">About</a>  |     
+                <a href="#donations">Donate</a>   
+            </div>
 
         </div>
         <!-- end #header -->
@@ -45,23 +54,9 @@
             
 		        </p>
 
-		            <h1>News</h1>
+		            <h1 id="usage">Usage</h1>
 		            <ul>
-				<li>Check out our new mini-tool <a href="http://pych.atomidata.com">PYCH - online python code checker</a></li>
-				<li><a href="http://www.pledgie.com/campaigns/11203">We now accept donations.</a></li>
-				<li>We can host your generated CSS files for you, gzipped and <a href="http://varnish-cache.org/">varnished</a>. With <a href="http://wiki.nginx.org/Main">the best server for the job</a>. Just copy the generated link tag into your HTML head and you are good to go.</li>
-				<li>The hosted version is now backed by PostgreSQL, the best RDBMS evar.</li>
-				<li>We moved to the cloud, to gain more buzzword compliance.</li>
-		                <li>Fixed a bug in the generator. The zips and the code work now.</li>
-		                <li>Generating fluid 100% width grids</li>
-		                <li>We moved to a new domain: 960ls.atomidata.com and new server. No trafic limits now!</li>
-		                <li>We moved the generating script from PHP to Python - <a href="http://flask.pocoo.org/">Flask</a> framework</li>
-		            </ul>
-		            <br />
-
-		            <h1>Usage</h1>
-		            <ul>
-		                <li>Set width, # of columns, and gutter width, then click <b>Save</b>.</li>
+		                <li>Set width, # of columns, and gutter width, then click <b>Start</b>.</li>
 		                <li>Hover over a section and click the <b>Add</b> button to add elements.</li>
 		                <li>Add an <b>id</b> or some additional <b>classes</b> to the element for more control.</li>
 		                <li>Click <b>Code</b> to see the generated HTML and CSS code <b>Zip</b> to download a zip archive of the generated code.</li>
@@ -69,7 +64,23 @@
 		            </ul>
 		            <br />
 
-		            <h1>FAQ</h1>
+		            <h1 id="news">News</h1>
+		            <ul>
+                                <li>Fluid CSS cut 35% in length with the removal of redundant code</li>
+                                <li>Removed some redundant classes/code from the generated CSS</li>
+                                <li>Added main menu on top and back-to-top link on the side</li>
+                                <li>Code highlight made more user-friendly</li>
+				<li>Check out our new mini-tool <a href="http://pych.atomidata.com">PYCH - online python code checker</a></li>
+				<li><a href="http://www.pledgie.com/campaigns/11203">We now accept donations.</a></li>
+				<li>We can host your generated CSS files for you, gzipped and <a href="http://varnish-cache.org/">varnished</a>. With <a href="http://wiki.nginx.org/Main">the best server for the job</a>. Just copy the generated link tag into your HTML head and you are good to go.</li>
+				<li>The hosted version is now backed by PostgreSQL, the best RDBMS evar.</li>
+				<li>We moved to the cloud, to gain more buzzword compliance.</li>
+		                <li>Fixed a bug in the generator. The zips and the code work now.</li>
+		                <li>Generating fluid 100% width grids</li>
+		            </ul>
+		            <br />
+
+		            <h1 id="faq">FAQ</h1>
 		            <p>
 		                <em>"What is that #header, #content, and #footer crap?"</em><br />
 		                The grid is broken up into 3 sections (#header, #content, and #footer) for the sake of simplicity. We feel these are the
@@ -97,7 +108,7 @@
 		            </p>
 		            <br />
 
-		            <h1>About 960.ls</h1>
+		            <h1 id="about960">About 960.ls</h1>
 		            <p>
 		                960.ls is <a href="http://flask.pocoo.org/">Flask</a> powered web application with high usage of JavaScript, developed by <b>Dejan Noveski, Vasil Vangelovski and Cory Simmons</b>.
 		            </p>
@@ -115,6 +126,7 @@
 		            </p>
 
 		        </div>
+                        <a href="#top" id="goto-top">TOP</a>
 		        <!-- end #about -->
 		        <script type="text/javascript">
 		        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

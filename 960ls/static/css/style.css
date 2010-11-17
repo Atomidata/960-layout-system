@@ -19,11 +19,35 @@ body {
     width:940px;
     margin:auto;
     height:200px;
+    position: relative;
 }
-#main_header a {
+#main_header #top-logo {
     width:254px;
     position:relative;
     left:-33px;
+}
+
+#main_header #top-menu{
+
+    position:absolute;
+    top:0px;
+    left: 400px;
+}
+
+#top-menu a:link,
+#top-menu a:visited,
+#top-menu a:hover{
+
+    color: #fff;
+    line-height: 22px;
+    font-size: 18px;
+    text-decoration: none;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+#top-menu a:hover{
+    text-decoration: underline;
 }
 
 #settings {
@@ -265,3 +289,29 @@ h2{
     margin-bottom: 20px;
         font-size:24px;
 }
+
+#css_embed_code_highlight,
+#css_code_highlight,
+#html_code_highlight{
+
+    background-color: #fff;
+    padding:10px;
+    border: 3px solid #999;
+}
+
+#goto-top{
+    display:block;
+    position:fixed;
+    right:0px;
+    top:200px;
+    font-size:1.5em;
+    padding:10px 25px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #fff;
+    border:1px solid #000;
+    border-radius: 6px 0px 0px 6px;
+    -moz-border-radius: 6px 0px 0px 6px;
+    -webkit-border-radius: 6px 0px 0px 6px;
+}
