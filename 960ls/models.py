@@ -6,10 +6,12 @@ class Template(Base):
     id = Column(Integer, primary_key=True)
     html = Column(UnicodeText())
     css = Column(UnicodeText())
-
-    def __init__(self, html = None, css = None):
+    css_url = Column(String(150))
+    
+    def __init__(self, html = None, css = None, css_url = None):
         self.html = html
         self.css = css
+        self.css_url = css_url
 
     def __repr__(self):
         return '<Template %s>' % (str(self.id))

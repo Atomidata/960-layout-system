@@ -12,6 +12,7 @@ import zipfile
 import os
 import sys
 import errno
+import uuid
 from datetime import datetime
 
 SITE_DOMAIN = '960ls.atomidata.com'
@@ -95,7 +96,8 @@ def template(template_id):
     
     
         
-    cssperma = 'http://%s/static/cssserve/%s/%s.css'%(SITE_DOMAIN, '/'.join(list(str(template.id))), str(template.id))
+    cssperma = template.css_url
+    
     pygmented_css_link =  highlight('<link rel="stylesheet" type="text/css" href="%s">'%cssperma,
                                     CssLexer(),
                                     HtmlFormatter(style = 'bw',
@@ -136,22 +138,31 @@ def _save_code():
                                gutter_width = long( request.form.get('gutter_width', DEFAULT_GUT_WIDTH)),
                                column_number = long( request.form.get('column_number', DEFAULT_COL_NUM)),
                               )
-    
-    
-    
-    template = Template(html = unicode(request.form.get('html_code')), css = unicode(csscontent))
+
+    n = datetime.now()
     root = os.path.dirname(__file__)
+    csspath = os.path.join(os.path.join(root, 'static'), 'cssserve')
+    csspath = os.path.join(csspath, str(n.year))
+    csspath = os.path.join(csspath, str(n.month))
+    csspath = os.path.join(csspath, str(n.day))
+    
+    if not os.path.isdir(csspath):
+        mkdir_p(csspath)
+
+    filename = "%s.css"%uuid.uuid4().hex
+    
+    cssf = open(os.path.join(csspath, filename), 'w')
+
+    cssf.write(csscontent)
+    cssf.close()
+
+    cssperma = 'http://%s/static/cssserve/%s/%s'%(SITE_DOMAIN,
+                                                      '/'.join([str(n.year), str(n.month), str(n.day)]), filename)
+    template = Template(html = unicode(request.form.get('html_code')), css = unicode(csscontent), css_url = cssperma)
     
     db_session.add(template)
     db_session.commit()
-    csspath = os.path.join(os.path.join(root, 'static'), 'cssserve')
-    for c in list(str(template.id)):
-        csspath = os.path.join(csspath, c)
-    if not os.path.isdir(csspath):
-        mkdir_p(csspath)
-    cssf = open(os.path.join(csspath, "%s.css"%str(template.id)), 'w')
-    cssf.write(csscontent)
-    cssf.close()
+
     return template.id
 
 @app.route("/zipped/<int:template_id>")
