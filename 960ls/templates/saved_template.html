@@ -18,10 +18,15 @@
         }
 
 </style>
+
+
+{%if pygmented_css_link_code%}
 <h2>CSS Link Code:</h2>
 <div id="css_embed_code_highlight" class="highlight">
 	{{pygmented_css_link_code|safe}}
 </div>
+{%endif%}
+
 {% if hashtml %}
 <h2>HTML Code:</h2>
 <div id="html_code_highlight" class="highlight">

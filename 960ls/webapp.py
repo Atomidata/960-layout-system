@@ -97,8 +97,9 @@ def template(template_id):
     
         
     cssperma = template.css_url
-    
-    pygmented_css_link =  highlight('<link rel="stylesheet" type="text/css" href="%s">'%cssperma,
+    pygmented_css_link = None
+    if cssperma:
+        pygmented_css_link =  highlight('<link rel="stylesheet" type="text/css" href="%s">'%cssperma,
                                     CssLexer(),
                                     HtmlFormatter(style = 'bw',
                                                   linenos = 'table'))
